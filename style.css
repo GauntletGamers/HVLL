@@ -1,0 +1,1952 @@
+@font-face {
+    font-family: "Berthold Block";
+    src: url("fonts/Block Berthold/blockberthold.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #0b0b0d;
+    color: #f3f3f3;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.site-header {
+    width: 100%;
+    background: #080809;
+    border-bottom: 1px solid #242428;
+}
+
+.header-inner {
+    width: min(1200px, calc(100% - 40px));
+    min-height: 76px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 87px;
+    height: 63px;
+
+    flex: 0 0 87px;
+
+    overflow: hidden;
+}
+
+.logo img {
+    display: block;
+
+    width: 87px;
+    height: 63px;
+
+    max-width: 87px;
+    max-height: 63px;
+
+    object-fit: contain;
+}
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
+.main-nav > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 9px 13px;
+
+    border-radius: 5px;
+
+    color: #a8a8ae;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.main-nav > a:hover {
+    background: #18181b;
+    color: #ffffff;
+}
+
+.main-nav > a.active {
+    color: #ffd500;
+}
+
+
+/* ========================================
+   ACCOUNT BUTTON
+======================================== */
+
+.account-button {
+    background: #ffd500 !important;
+    color: #0b0b0d !important;
+
+    border: 1px solid #ffd500;
+}
+
+.account-button:hover {
+    background: #ffe34d !important;
+    color: #0b0b0d !important;
+
+    border-color: #ffe34d;
+}
+
+
+/* ========================================
+   SOCIAL BUTTONS
+======================================== */
+
+.social-button {
+    background: #151517;
+
+    color: #ffffff !important;
+
+    border: 1px solid #303034;
+}
+
+.social-button:hover {
+    background: #232326 !important;
+
+    border-color: #4a4a4f;
+}
+
+
+/* ========================================
+   GENERAL PAGE
+======================================== */
+
+.page-container {
+    width: min(1050px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 70px 0 100px;
+}
+
+
+/* ========================================
+   PAGE HEADING
+======================================== */
+
+.page-heading {
+    margin-bottom: 55px;
+}
+
+.eyebrow {
+    color: #ffd500;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.page-heading .eyebrow {
+    margin-bottom: 10px;
+}
+
+.page-heading h1 {
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: clamp(42px, 6vw, 72px);
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+.page-heading p:not(.eyebrow) {
+    max-width: 680px;
+
+    margin-top: 18px;
+
+    color: #929298;
+
+    font-size: 16px;
+}
+
+
+/* ========================================
+   LEVELS
+======================================== */
+
+.profile-section {
+    width: 100%;
+    margin-bottom: 55px;
+}
+
+.levels-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+.level-card {
+    width: 100%;
+    min-height: 105px;
+
+    padding: 22px 28px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+    border-radius: 8px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.level-card:hover {
+    background: #161618;
+
+    border-color: #3b3b40;
+
+    transform: translateY(-2px);
+}
+
+.level-rank {
+    width: 65px;
+
+    flex-shrink: 0;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 30px;
+    line-height: 1;
+
+    color: #ffd500;
+}
+
+.level-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.level-info h2 {
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 28px;
+    line-height: 1.1;
+
+    color: #ffffff;
+}
+
+.creator {
+    margin-top: 7px;
+
+    color: #77777d;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   HOMEPAGE
+======================================== */
+
+.hero {
+    width: min(1200px, calc(100% - 40px));
+
+    min-height: 620px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero .eyebrow {
+    margin-bottom: 18px;
+
+    color: #ffd500;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 4px;
+}
+
+.hero h1 {
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: clamp(58px, 8vw, 100px);
+
+    line-height: 0.92;
+
+    color: #ffffff;
+}
+
+.hero-description {
+    max-width: 650px;
+
+    margin-top: 28px;
+
+    color: #929298;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.primary-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    background: #ffd500;
+
+    color: #0b0b0d;
+
+    border: 1px solid #ffd500;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+.primary-button:hover {
+    background: #ffe34d;
+
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 21px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid #36363b;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.secondary-button:hover {
+    background: #18181b;
+
+    border-color: #55555b;
+}
+
+
+/* ========================================
+   HOMEPAGE INFO
+======================================== */
+
+.info-section {
+    width: min(1200px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 90px 0;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    margin-top: 8px;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 48px;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.info-card {
+    min-height: 250px;
+
+    padding: 30px;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 8px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.info-card:hover {
+    background: #161618;
+
+    border-color: #3b3b40;
+
+    transform: translateY(-2px);
+}
+
+.info-number {
+    margin-bottom: 45px;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 28px;
+
+    color: #ffd500;
+}
+
+.info-card h3 {
+    margin-bottom: 10px;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 25px;
+
+    line-height: 1.1;
+
+    color: #ffffff;
+}
+
+.info-card p {
+    color: #85858b;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   HOMEPAGE CTA
+======================================== */
+
+.cta-section {
+    width: min(1200px, calc(100% - 40px));
+
+    margin: 0 auto 100px;
+
+    padding: 35px 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 8px;
+}
+
+.cta-section h2 {
+    margin-top: 8px;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+
+/* ========================================
+   ACCOUNT PAGE
+======================================== */
+
+.account-page {
+    width: min(1050px, calc(100% - 40px));
+
+    min-height: calc(100vh - 150px);
+
+    margin: 0 auto;
+
+    padding: 70px 0 100px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.account-card {
+    width: min(520px, 100%);
+
+    padding: 40px;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 8px;
+}
+
+.account-card .eyebrow {
+    margin-bottom: 10px;
+}
+
+.account-card h1 {
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 48px;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+.account-description {
+    margin: 20px 0 35px;
+
+    color: #8f8f95;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+#createAccountForm {
+    display: flex;
+
+    flex-direction: column;
+}
+
+#createAccountForm label {
+    margin-bottom: 7px;
+
+    color: #c5c5ca;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+#createAccountForm input {
+    width: 100%;
+
+    margin-bottom: 22px;
+
+    padding: 13px 15px;
+
+    background: #080809;
+
+    color: #ffffff;
+
+    border: 1px solid #303034;
+
+    border-radius: 5px;
+
+    outline: none;
+}
+
+#createAccountForm input::placeholder {
+    color: #5f5f65;
+}
+
+#createAccountForm input:focus {
+    background: #0d0d0f;
+
+    border-color: #ffd500;
+}
+
+.form-message {
+    min-height: 24px;
+
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.form-message.success {
+    color: #72e08a;
+}
+
+.form-message.error {
+    color: #ff6464;
+}
+
+
+/* ========================================
+   PROFILE PAGE
+======================================== */
+
+.profile-page {
+    width: min(1050px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 70px 0 100px;
+}
+
+.profile-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-bottom: 40px;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #171719;
+
+    border: 2px solid #ffd500;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 28px;
+
+    color: #ffd500;
+}
+
+.profile-header h1 {
+    margin-top: 5px;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+#profileStatus {
+    margin-top: 7px;
+
+    color: #77777d;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   PROFILE STATS
+======================================== */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 70px;
+}
+
+.stat-card {
+    padding: 25px;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 8px;
+}
+
+.stat-card span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #77777d;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.stat-card strong {
+    display: block;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 36px;
+
+    line-height: 1;
+
+    color: #ffd500;
+}
+
+
+/* ========================================
+   PROFILE RECORDS
+======================================== */
+
+.records-container,
+.history-container {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.record-item {
+    min-height: 65px;
+
+    padding: 18px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 7px;
+}
+
+.record-item strong {
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+.record-item span {
+    color: #ffd500;
+
+    font-weight: 700;
+}
+
+.empty-state {
+    padding: 35px;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 8px;
+
+    text-align: center;
+}
+
+.empty-state h3 {
+    margin-bottom: 7px;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 24px;
+
+    color: #ffffff;
+}
+
+.empty-state p {
+    color: #77777d;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   PROFILE SECTIONS
+======================================== */
+
+.profile-page .profile-section {
+    margin-bottom: 65px;
+}
+
+.profile-page .section-heading {
+    margin-bottom: 25px;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.site-footer {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: #080809;
+
+    border-top: 1px solid #242428;
+
+    color: #66666c;
+
+    font-size: 13px;
+}
+
+.site-footer p + p {
+    margin-top: 5px;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 800px) {
+
+    .header-inner {
+        width: calc(100% - 24px);
+
+        min-height: auto;
+
+        padding: 18px 0;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 18px;
+    }
+
+    .main-nav {
+        justify-content: center;
+    }
+
+    .page-container,
+    .profile-page,
+    .account-page {
+        width: calc(100% - 24px);
+
+        padding-top: 45px;
+    }
+
+    .hero {
+        width: calc(100% - 24px);
+
+        min-height: 540px;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .info-section {
+        width: calc(100% - 24px);
+
+        padding: 60px 0;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 40px;
+    }
+
+    .cta-section {
+        width: calc(100% - 24px);
+
+        margin-bottom: 60px;
+
+        padding: 28px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .level-card {
+        gap: 18px;
+
+        padding: 20px;
+    }
+
+    .level-rank {
+        width: 50px;
+
+        font-size: 25px;
+    }
+
+    .level-info h2 {
+        font-size: 23px;
+    }
+
+    .account-card {
+        padding: 30px 24px;
+    }
+
+    .account-card h1 {
+        font-size: 40px;
+    }
+}
+
+
+/* ========================================
+   PHONE
+======================================== */
+
+@media (max-width: 500px) {
+
+    .logo {
+        width: 55px;
+
+        height: 40px;
+
+        flex-basis: 55px;
+    }
+
+    .logo img {
+        width: 55px;
+        height: 40px;
+
+        max-width: 55px;
+        max-height: 40px;
+    }
+
+    .main-nav {
+        gap: 3px;
+    }
+
+    .main-nav > a {
+        padding: 8px 9px;
+
+        font-size: 12px;
+    }
+
+    .page-heading h1 {
+        font-size: 38px;
+    }
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+    .cta-section h2 {
+        font-size: 28px;
+    }
+
+    .level-card {
+        padding: 17px;
+    }
+
+    .level-rank {
+        width: 42px;
+
+        font-size: 22px;
+    }
+
+    .level-info h2 {
+        font-size: 20px;
+    }
+
+    .creator {
+        font-size: 12px;
+    }
+
+    .account-card {
+        padding: 25px 19px;
+    }
+
+    .account-card h1 {
+        font-size: 34px;
+    }
+
+    .profile-header {
+        align-items: flex-start;
+    }
+
+    .profile-avatar {
+        width: 70px;
+        height: 70px;
+
+        font-size: 22px;
+    }
+
+    .profile-header h1 {
+        font-size: 32px;
+    }
+}
+
+/* ========================================
+   LEVEL THUMBNAILS
+======================================== */
+
+.level-image {
+    width: 150px;
+    height: 85px;
+
+    min-width: 150px;
+    max-width: 150px;
+
+    min-height: 85px;
+    max-height: 85px;
+
+    flex: 0 0 150px;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+
+    background: #080809;
+    border: 1px solid #303034;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.level-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.level-image-placeholder {
+    color: #55555b;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   EDIT PROFILE
+======================================== */
+
+.edit-profile-page {
+    width: min(1050px, calc(100% - 40px));
+    min-height: calc(100vh - 150px);
+
+    margin: 0 auto;
+
+    padding: 70px 0 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.edit-profile-card {
+    width: min(560px, 100%);
+
+    padding: 40px;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 10px;
+}
+
+.edit-profile-card h1 {
+    margin-top: 5px;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 48px;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+.edit-profile-description {
+    margin: 18px 0 35px;
+
+    color: #8f8f95;
+
+    font-size: 15px;
+}
+
+#editProfileForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#editProfileForm > label {
+    margin-bottom: 7px;
+
+    color: #c5c5ca;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#editProfileForm input[type="text"],
+#editProfileForm input[type="url"] {
+    width: 100%;
+
+    margin-bottom: 22px;
+
+    padding: 13px 15px;
+
+    background: #080809;
+
+    color: #ffffff;
+
+    border: 1px solid #303034;
+
+    border-radius: 5px;
+
+    outline: none;
+}
+
+#editProfileForm input:focus {
+    border-color: #ffd500;
+}
+
+
+/* ========================================
+   PFP EDITOR
+======================================== */
+
+.pfp-editor {
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-bottom: 28px;
+}
+
+.pfp-preview {
+    width: 100px;
+    height: 100px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: #171719;
+
+    border: 2px solid #ffd500;
+
+    border-radius: 50%;
+
+    color: #ffd500;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 32px;
+}
+
+.pfp-preview img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.pfp-controls {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+}
+
+.upload-button {
+    cursor: pointer;
+}
+
+.danger-button {
+    padding: 8px 12px;
+
+    background: transparent;
+
+    color: #ff6464;
+
+    border: 1px solid #4a2525;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.danger-button:hover {
+    background: #241515;
+
+    border-color: #703535;
+}
+
+/* ========================================
+   COUNTRY PICKER
+======================================== */
+
+.country-picker {
+    position: relative;
+    width: 100%;
+}
+
+.country-picker-button {
+    width: 100%;
+    min-height: 50px;
+
+    padding: 10px 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #080809;
+    color: #ffffff;
+
+    border: 1px solid #303034;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.country-picker-button:hover {
+    background: #0d0d0f;
+    border-color: #4a4a4f;
+}
+
+.country-button-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.country-placeholder {
+    color: #5f5f65;
+    font-weight: 400;
+}
+
+.selected-country-flag {
+    width: 32px;
+    height: 21px;
+
+    flex-shrink: 0;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 2px;
+
+    border: 1px solid #303034;
+}
+
+.country-arrow {
+    margin-left: 15px;
+
+    color: #88888f;
+
+    font-size: 11px;
+
+    flex-shrink: 0;
+
+    transition: transform 0.2s ease;
+}
+
+.country-dropdown.open + .country-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* ========================================
+   COUNTRY DROPDOWN
+======================================== */
+
+.country-dropdown {
+    position: absolute;
+
+    top: calc(100% + 7px);
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    padding: 10px;
+
+    background: #111113;
+
+    border: 1px solid #303034;
+    border-radius: 6px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+.country-dropdown.open {
+    display: block;
+}
+
+
+/* ========================================
+   COUNTRY SEARCH
+======================================== */
+
+.country-search {
+    width: 100%;
+
+    margin-bottom: 8px;
+
+    padding: 11px 12px;
+
+    background: #080809;
+
+    color: #ffffff;
+
+    border: 1px solid #303034;
+    border-radius: 5px;
+
+    outline: none;
+
+    box-sizing: border-box;
+}
+
+.country-search::placeholder {
+    color: #5f5f65;
+}
+
+.country-search:focus {
+    border-color: #ffd500;
+}
+
+
+/* ========================================
+   COUNTRY LIST
+======================================== */
+
+.country-list {
+    max-height: 300px;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.country-option {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 7px 9px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 0;
+    border-radius: 4px;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.country-option:hover {
+    background: #1c1c20;
+}
+
+.country-option img {
+    width: 32px;
+    height: 21px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 2px;
+
+    border: 1px solid #303034;
+}
+
+.country-option span {
+    font-size: 14px;
+}
+
+
+/* ========================================
+   PROFILE PICTURE EDITOR
+======================================== */
+
+.edit-pfp-row {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+.edit-pfp-preview {
+    width: 82px;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background: #171719;
+
+    border: 2px solid #ffd500;
+
+    color: #ffd500;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+    font-size: 26px;
+}
+
+.edit-pfp-preview img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.pfp-buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.remove-button {
+    padding: 11px 16px;
+
+    background: transparent;
+
+    color: #ff6464;
+
+    border: 1px solid #3b3030;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.remove-button:hover {
+    background: #211416;
+    border-color: #684044;
+}
+
+
+/* ========================================
+   EDIT PROFILE
+======================================== */
+
+.edit-profile-page {
+    width: min(1050px, calc(100% - 40px));
+
+    min-height: calc(100vh - 150px);
+
+    margin: 0 auto;
+
+    padding: 70px 0 100px;
+}
+
+.edit-profile-card {
+    width: min(560px, 100%);
+
+    margin: 0 auto;
+
+    padding: 40px;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 8px;
+}
+
+.edit-profile-card h1 {
+    margin: 0;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 48px;
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+.edit-description {
+    margin: 15px 0 35px;
+
+    color: #8f8f95;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.edit-field {
+    margin-bottom: 24px;
+}
+
+.edit-field > label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #c5c5ca;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.edit-field input[type="text"],
+.edit-field input[type="url"] {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    box-sizing: border-box;
+
+    background: #080809;
+
+    color: #ffffff;
+
+    border: 1px solid #303034;
+
+    border-radius: 5px;
+
+    outline: none;
+}
+
+.edit-field input[type="text"]:focus,
+.edit-field input[type="url"]:focus {
+    border-color: #ffd500;
+}
+
+.edit-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 32px;
+}
+
+.form-message {
+    min-height: 24px;
+
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.form-message.success {
+    color: #72e08a;
+}
+
+.form-message.error {
+    color: #ff6464;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .edit-profile-page {
+        width: calc(100% - 24px);
+
+        padding-top: 45px;
+    }
+
+    .edit-profile-card {
+        padding: 30px 24px;
+    }
+
+    .edit-profile-card h1 {
+        font-size: 40px;
+    }
+
+    .edit-pfp-row {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .pfp-buttons {
+        width: 100%;
+
+        flex-wrap: wrap;
+    }
+
+    .edit-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+    .edit-actions a,
+    .edit-actions button {
+        width: 100%;
+    }
+}
+
+
+/* ========================================
+   SAVE BUTTON
+======================================== */
+
+.save-profile-button {
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+
+/* ========================================
+   PROFILE COUNTRY
+======================================== */
+
+.profile-country {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 9px;
+
+    color: #929298;
+
+    font-size: 14px;
+}
+
+.profile-country img {
+    width: 32px;
+    height: 22px;
+
+    object-fit: cover;
+
+    border-radius: 3px;
+
+    display: block;
+}
+
+
+/* ========================================
+   PROFILE LINKS
+======================================== */
+
+.profile-links {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 13px;
+
+    margin-bottom: 16px;
+}
+
+.profile-link {
+    padding: 6px 10px;
+
+    background: #171719;
+
+    color: #cfcfd3;
+
+    border: 1px solid #303034;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+}
+
+.profile-link:hover {
+    background: #222225;
+
+    border-color: #55555b;
+
+    color: #ffffff;
+}
+
+.edit-profile-button {
+    margin-top: 2px;
+}
+
+
+/* ========================================
+   PROFILE AVATAR
+======================================== */
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background: #171719;
+
+    border: 2px solid #ffd500;
+
+    color: #ffd500;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 30px;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .edit-profile-page {
+        width: calc(100% - 24px);
+
+        padding-top: 45px;
+    }
+
+    .edit-profile-card {
+        padding: 28px 22px;
+    }
+
+    .edit-profile-card h1 {
+        font-size: 40px;
+    }
+
+    .pfp-editor {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .pfp-controls {
+        flex-direction: row;
+
+        align-items: center;
+    }
+
+    .profile-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}

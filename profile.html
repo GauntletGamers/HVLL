@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HVLL - Level</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <a href="homepage.html" class="logo">
+            <img src="HVLL.webp" alt="HVLL">
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="homepage.html">
+                Home
+            </a>
+
+            <a href="levels.html">
+                Levels
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="edit-profile.html">
+                Edit Profile
+            </a>
+
+            <a href="releases.html">
+                Releases
+            </a>
+
+            <a href="create-account.html" class="account-button">
+                Create Account
+            </a>
+
+            <a
+                href="https://discord.gg/bbJP9rTnj"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Discord
+            </a>
+
+            <a
+                href="https://www.youtube.com/@RCSB4771"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                YouTube
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<main class="profile-page">
+
+
+    <!-- PROFILE HEADER -->
+
+    <section class="profile-header">
+
+        <div
+            class="profile-avatar"
+            id="profileAvatar"
+        >
+            ?
+        </div>
+
+        <div class="profile-main-info">
+
+            <div class="profile-name-row">
+
+                <h1 id="profileUsername">
+                    Guest
+                </h1>
+
+                <span
+                    id="profileFlag"
+                    class="profile-flag-container"
+                ></span>
+
+            </div>
+
+            <p
+                id="profileStatus"
+                class="profile-status"
+            >
+                No account loaded.
+            </p>
+
+            <div
+                id="profileLinks"
+                class="profile-links"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RECORDS -->
+
+    <section class="profile-section">
+
+        <div class="section-heading">
+
+            <h2>
+                HVLL Records
+            </h2>
+
+        </div>
+
+        <div
+            id="recordsContainer"
+            class="records-container"
+        >
+
+            <div class="empty-state">
+
+                <h3>
+                    No records yet
+                </h3>
+
+                <p>
+                    HVLL records for this account will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEVELS -->
+
+    <section class="profile-section">
+
+        <div class="section-heading">
+
+            <h2>
+                Levels
+            </h2>
+
+        </div>
+
+        <div
+            id="levelsContainer"
+            class="records-container"
+        >
+
+            <div class="empty-state">
+
+                <h3>
+                    No levels yet
+                </h3>
+
+                <p>
+                    Levels associated with this profile will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HISTORY -->
+
+    <section class="profile-section">
+
+        <div class="section-heading">
+
+            <h2>
+                HVLL History
+            </h2>
+
+        </div>
+
+        <div
+            id="historyContainer"
+            class="history-container"
+        >
+
+            <div class="empty-state">
+
+                <h3>
+                    No history yet
+                </h3>
+
+                <p>
+                    HVLL placement and record history will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <p>
+        HVLL — Hardest Verified Levels List
+    </p>
+
+    <p>
+        Verified. Ranked. Challenged.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ==================================================
+   LOAD ACCOUNT
+================================================== */
+
+const storedAccount =
+    localStorage.getItem("hvllAccount");
+
+
+if (!storedAccount) {
+
+    console.log("No HVLL account found.");
+
+} else {
+
+    let account;
+
+    try {
+
+        account =
+            JSON.parse(storedAccount);
+
+    } catch (error) {
+
+        console.error(
+            "Could not load HVLL account:",
+            error
+        );
+
+        account = null;
+
+    }
+
+
+    if (account) {
+
+        const profile =
+            account.profile || {};
+
+        const links =
+            profile.links || {};
+
+
+        /* ==================================================
+           USERNAME
+        ================================================== */
+
+        const username =
+            account.username || "Guest";
+
+        document
+            .getElementById("profileUsername")
+            .textContent = username;
+
+
+        document
+            .getElementById("profileStatus")
+            .textContent = "HVLL Player";
+
+
+        /* ==================================================
+           PROFILE PICTURE
+        ================================================== */
+
+        const avatar =
+            document.getElementById(
+                "profileAvatar"
+            );
+
+
+        avatar.innerHTML = "";
+
+
+        if (profile.pfp) {
+
+            const image =
+                document.createElement("img");
+
+            image.src =
+                profile.pfp;
+
+            image.alt =
+                `${username}'s profile picture`;
+
+            image.className =
+                "profile-avatar-image";
+
+            avatar.appendChild(
+                image
+            );
+
+        } else {
+
+            avatar.textContent =
+                username
+                    .charAt(0)
+                    .toUpperCase() || "?";
+
+        }
+
+
+        /* ==================================================
+           COUNTRY FLAG
+        ================================================== */
+
+        const flagContainer =
+            document.getElementById(
+                "profileFlag"
+            );
+
+
+        flagContainer.innerHTML = "";
+
+
+        const flagCode =
+            profile.flagCode ||
+            profile.flag ||
+            "";
+
+
+        if (
+            flagCode &&
+            /^[a-z]{2}$/i.test(flagCode)
+        ) {
+
+            const flagImage =
+                document.createElement("img");
+
+            flagImage.src =
+                `https://flagcdn.com/w80/${flagCode.toLowerCase()}.png`;
+
+            flagImage.alt =
+                `${profile.flagName || "Country"} flag`;
+
+            flagImage.className =
+                "profile-flag";
+
+
+            flagContainer.appendChild(
+                flagImage
+            );
+
+        }
+
+
+        /* ==================================================
+           SOCIAL LINKS
+        ================================================== */
+
+        const profileLinks =
+            document.getElementById(
+                "profileLinks"
+            );
+
+
+        profileLinks.innerHTML = "";
+
+
+        if (links.discord) {
+
+            const discord =
+                document.createElement("a");
+
+            discord.href =
+                links.discord;
+
+            discord.target =
+                "_blank";
+
+            discord.rel =
+                "noopener noreferrer";
+
+            discord.className =
+                "profile-link discord-profile-link";
+
+            discord.textContent =
+                "Discord";
+
+
+            profileLinks.appendChild(
+                discord
+            );
+
+        }
+
+
+        if (links.youtube) {
+
+            const youtube =
+                document.createElement("a");
+
+            youtube.href =
+                links.youtube;
+
+            youtube.target =
+                "_blank";
+
+            youtube.rel =
+                "noopener noreferrer";
+
+            youtube.className =
+                "profile-link youtube-profile-link";
+
+            youtube.textContent =
+                "YouTube";
+
+
+            profileLinks.appendChild(
+                youtube
+            );
+
+        }
+
+
+        /* ==================================================
+           RECORDS
+        ================================================== */
+
+        const records =
+            account.records || [];
+
+
+        const recordsContainer =
+            document.getElementById(
+                "recordsContainer"
+            );
+
+
+        if (records.length > 0) {
+
+            recordsContainer.innerHTML = "";
+
+
+            records.forEach(
+                record => {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+                    item.className =
+                        "record-item";
+
+
+                    const level =
+                        document.createElement(
+                            "strong"
+                        );
+
+                    level.textContent =
+                        record.level ||
+                        "Unknown Level";
+
+
+                    const progress =
+                        document.createElement(
+                            "span"
+                        );
+
+                    progress.textContent =
+                        record.progress ||
+                        "100%";
+
+
+                    item.appendChild(
+                        level
+                    );
+
+                    item.appendChild(
+                        progress
+                    );
+
+
+                    recordsContainer.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ==================================================
+           LEVELS
+        ================================================== */
+
+        const levels =
+            profile.levels || [];
+
+
+        const levelsContainer =
+            document.getElementById(
+                "levelsContainer"
+            );
+
+
+        if (levels.length > 0) {
+
+            levelsContainer.innerHTML = "";
+
+
+            levels.forEach(
+                level => {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+                    item.className =
+                        "record-item";
+
+
+                    if (
+                        typeof level === "string"
+                    ) {
+
+                        item.textContent =
+                            level;
+
+                    } else {
+
+                        const name =
+                            document.createElement(
+                                "strong"
+                            );
+
+                        name.textContent =
+                            level.name ||
+                            level.level ||
+                            "Unknown Level";
+
+
+                        const info =
+                            document.createElement(
+                                "span"
+                            );
+
+                        info.textContent =
+                            level.creator ||
+                            "";
+
+
+                        item.appendChild(
+                            name
+                        );
+
+                        if (info.textContent) {
+
+                            item.appendChild(
+                                info
+                            );
+
+                        }
+
+                    }
+
+
+                    levelsContainer.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ==================================================
+           HISTORY
+        ================================================== */
+
+        const history =
+            profile.hvllHistory || [];
+
+
+        const historyContainer =
+            document.getElementById(
+                "historyContainer"
+            );
+
+
+        if (history.length > 0) {
+
+            historyContainer.innerHTML = "";
+
+
+            history.forEach(
+                entry => {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+                    item.className =
+                        "history-item";
+
+
+                    if (
+                        typeof entry === "string"
+                    ) {
+
+                        item.textContent =
+                            entry;
+
+                    } else {
+
+                        const title =
+                            document.createElement(
+                                "strong"
+                            );
+
+                        title.textContent =
+                            entry.level ||
+                            entry.name ||
+                            "HVLL Update";
+
+
+                        const details =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        const placement =
+                            entry.placement
+                            ? `#${entry.placement}`
+                            : "";
+
+
+                        const date =
+                            entry.date ||
+                            "";
+
+
+                        details.textContent =
+                            [placement, date]
+                                .filter(Boolean)
+                                .join(" • ");
+
+
+                        item.appendChild(
+                            title
+                        );
+
+
+                        if (details.textContent) {
+
+                            item.appendChild(
+                                details
+                            );
+
+                        }
+
+                    }
+
+
+                    historyContainer.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
+
+    }
+
+}
+
+</script>
+
+
+<style>
+
+/* ==================================================
+   PROFILE PAGE
+================================================== */
+
+.profile-page {
+    width: min(1050px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 70px 0 100px;
+}
+
+
+/* ==================================================
+   PROFILE HEADER
+================================================== */
+
+.profile-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-bottom: 60px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background: #171719;
+
+    border: 2px solid #ffd500;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 32px;
+
+    color: #ffd500;
+}
+
+.profile-avatar-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.profile-main-info {
+    min-width: 0;
+}
+
+.profile-name-row {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+}
+
+.profile-name-row h1 {
+    margin: 0;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+.profile-flag-container {
+    display: inline-flex;
+
+    align-items: center;
+
+    height: 28px;
+}
+
+.profile-flag {
+    width: 36px;
+    height: 24px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 2px;
+
+    border: 1px solid #303034;
+}
+
+.profile-status {
+    margin: 10px 0 0;
+
+    color: #77777d;
+
+    font-size: 14px;
+}
+
+.profile-links {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 14px;
+}
+
+.profile-link {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 12px;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    background: #151517;
+
+    border: 1px solid #303034;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.profile-link:hover {
+    background: #232326;
+
+    border-color: #4a4a4f;
+}
+
+
+/* ==================================================
+   SECTIONS
+================================================== */
+
+.profile-section {
+    width: 100%;
+
+    margin-bottom: 55px;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 40px;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+
+/* ==================================================
+   RECORDS / LEVELS
+================================================== */
+
+.records-container,
+.history-container {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.record-item,
+.history-item {
+    min-height: 55px;
+
+    padding: 16px 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    box-sizing: border-box;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 6px;
+}
+
+.record-item strong,
+.history-item strong {
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+.record-item span,
+.history-item span {
+    color: #77777d;
+
+    font-size: 13px;
+}
+
+.empty-state {
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: #111113;
+
+    border: 1px solid #242428;
+
+    border-radius: 8px;
+}
+
+.empty-state h3 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-family: "Berthold Block", Arial, sans-serif;
+
+    font-size: 24px;
+}
+
+.empty-state p {
+    margin: 0;
+
+    color: #77777d;
+
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+    .profile-page {
+        width: calc(100% - 24px);
+
+        padding-top: 45px;
+    }
+
+    .profile-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 18px;
+
+        margin-bottom: 45px;
+    }
+
+    .profile-name-row h1 {
+        font-size: 36px;
+    }
+
+    .profile-avatar {
+        width: 85px;
+        height: 85px;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+    .record-item,
+    .history-item {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+}
+
+</style>
+
+</body>
+</html>

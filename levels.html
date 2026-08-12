@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HVLL - Levels</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <a href="homepage.html" class="logo">
+            <img src="HVLL.webp" alt="HVLL">
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="homepage.html">
+                Home
+            </a>
+
+            <a href="levels.html">
+                Levels
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="edit-profile.html">
+                Edit Profile
+            </a>
+
+            <a href="releases.html">
+                Releases
+            </a>
+
+            <a href="create-account.html" class="active account-button">
+                Create Account
+            </a>
+
+            <a
+                href="https://discord.gg/bbJP9rTnj"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Discord
+            </a>
+
+            <a
+                href="https://www.youtube.com/@RCSB4771"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                YouTube
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<main class="levels-page">
+
+    <section class="page-heading">
+
+        <h1>
+            Hardest Verified Levels
+        </h1>
+
+        <p>
+            The current HVLL rankings.
+        </p>
+
+    </section>
+
+
+    <section class="levels-controls">
+
+        <input
+            type="search"
+            id="levelSearch"
+            class="level-search"
+            placeholder="Search levels..."
+            autocomplete="off"
+        >
+
+    </section>
+
+
+    <section
+        id="levelsList"
+        class="levels-list"
+    ></section>
+
+
+    <section
+        id="noResults"
+        class="empty-state"
+        style="display: none;"
+    >
+
+        <h2>
+            No levels found
+        </h2>
+
+        <p>
+            Try a different search.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <p>
+        HVLL — Hardest Verified Levels List
+    </p>
+
+    <p>
+        Verified. Ranked. Challenged.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ==================================================
+   HVLL LEVEL DATABASE
+================================================== */
+
+const levels = [
+
+    {
+        id: "society",
+        rank: 1,
+        name: "Society",
+        creator: "Neomarbilan",
+        verifier: "wPopoff",
+
+        image:
+            "https://i.ytimg.com/vi/ht7i-nm8k24/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDfzxIIAfDAxhy7ofzrfMUYuqID8Q"
+    },
+
+
+    {
+        id: "thinking-space-ii",
+        rank: 2,
+        name: "Thinking Space II",
+        creator: "CairoX",
+        verifier: "Zoink",
+
+        image:
+            "https://i.ytimg.com/vi/xe_Wk_Sy9Pk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCsP9vo63llbJdFA55z6pB2uGo7vg"
+    },
+
+
+    {
+        id: "flamewall",
+        rank: 3,
+        name: "Flamewall",
+        creator: "UNarwall",
+        verifier: "Cuatrocientos",
+
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJXw4SjhKfKLQwcbEGDKUAnrXYjUlGHpDHeD5nXCu42__ZL95jqPapRqcO&s=10"
+    },
+
+
+    {
+        id: "amethyst",
+        rank: 4,
+        name: "Amethyst",
+        creator: "iMist",
+        verifier: "wPopoff",
+
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz5ObY0FlniRojUWNCBjqP0pP5nBAUiDQZM2rSEWGpbQ&s=10"
+    },
+
+
+    {
+        id: "tidal-wave",
+        rank: 5,
+        name: "Tidal Wave",
+        creator: "OniLinkGD",
+        verifier: "Zoink",
+
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC5xmxnd1FXHxgIAfS7R-NKZsePhE_iFS7aZHn_l8Rmg&s=10"
+    },
+
+
+    {
+        id: "green-bullet",
+        rank: 6,
+        name: "Green Bullet",
+        creator: "cherryteam",
+        verifier: "NiCkNaMe09",
+
+        image:
+            "https://i.ytimg.com/vi/BTXbb8ccRr0/maxresdefault.jpg"
+    },
+
+
+    {
+        id: "orbit",
+        rank: 7,
+        name: "ORBIT",
+        creator: "MindCap",
+        verifier: "Zoink",
+
+        image:
+            "https://preview.redd.it/where-do-you-guys-think-orbit-will-be-placed-when-its-v0-pvzb2rbxxv4g1.png?auto=webp&s=29e9e5c3f69aebf09b2ee3de1cf2f17c07258293"
+    },
+
+
+    {
+        id: "aquamarine",
+        rank: 8,
+        name: "Aquamarine",
+        creator: "sincos",
+        verifier: "seels55",
+
+        image: "https://i.ytimg.com/vi/80YeaP2DLvQ/maxresdefault.jpg"
+    },
+
+
+    {
+        id: "nullscapes",
+        rank: 9,
+        name: "Nullscapes",
+        creator: "ItzKiba",
+        verifier: "Zoink",
+
+        image:
+            "https://i.ytimg.com/vi/C-KDhWkXlvI/maxresdefault.jpg"
+    },
+
+
+    {
+        id: "boobawamba",
+        rank: 10,
+        name: "BOOBAWAMBA",
+        creator: "Akunakunn",
+        verifier: "EastShark1",
+
+        image:
+            "https://static.wikia.nocookie.net/geometry-dash-fan/images/9/97/Boobawamba_06.jpg/revision/latest?cb=20251118230817"
+    }
+
+];
+
+
+/* ==================================================
+   ELEMENTS
+================================================== */
+
+const levelsList =
+    document.getElementById("levelsList");
+
+const searchInput =
+    document.getElementById("levelSearch");
+
+const noResults =
+    document.getElementById("noResults");
+
+
+/* ==================================================
+   CREATE THUMBNAIL
+================================================== */
+
+function createThumbnail(level) {
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "level-thumbnail-wrapper";
+
+
+    if (level.image) {
+
+        const image =
+            document.createElement("img");
+
+        image.className =
+            "level-thumbnail";
+
+        image.src =
+            level.image;
+
+        image.alt =
+            `${level.name} thumbnail`;
+
+        image.loading =
+            "lazy";
+
+
+        image.onerror =
+            function () {
+
+                wrapper.innerHTML = `
+                    <div class="no-thumbnail">
+                        No thumbnail
+                    </div>
+                `;
+
+            };
+
+
+        wrapper.appendChild(image);
+
+    } else {
+
+        wrapper.innerHTML = `
+            <div class="no-thumbnail">
+                No thumbnail
+            </div>
+        `;
+
+    }
+
+
+    return wrapper;
+
+}
+
+
+/* ==================================================
+   RENDER LEVELS
+================================================== */
+
+function renderLevels() {
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const filteredLevels =
+        levels.filter(level => {
+
+            return (
+                level.name
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                level.creator
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                level.verifier
+                    .toLowerCase()
+                    .includes(search)
+            );
+
+        });
+
+
+    levelsList.innerHTML =
+        "";
+
+
+    if (
+        filteredLevels.length === 0
+    ) {
+
+        noResults.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    noResults.style.display =
+        "none";
+
+
+    filteredLevels.forEach(level => {
+
+        const card =
+            document.createElement("a");
+
+
+        card.className =
+            "level-card";
+
+
+        card.href =
+            `level.html?id=${encodeURIComponent(level.id)}`;
+
+
+        /* THUMBNAIL */
+
+        card.appendChild(
+            createThumbnail(level)
+        );
+
+
+        /* RANK */
+
+        const rank =
+            document.createElement("div");
+
+        rank.className =
+            "level-rank";
+
+        rank.textContent =
+            `#${level.rank}`;
+
+
+        card.appendChild(rank);
+
+
+        /* INFO */
+
+        const info =
+            document.createElement("div");
+
+        info.className =
+            "level-info";
+
+
+        const title =
+            document.createElement("h2");
+
+        title.textContent =
+            level.name;
+
+
+        const creator =
+            document.createElement("p");
+
+        creator.className =
+            "level-creator";
+
+        creator.textContent =
+            `Creator: ${level.creator}`;
+
+
+        const verifier =
+            document.createElement("p");
+
+        verifier.className =
+            "level-verifier";
+
+        verifier.textContent =
+            `Verifier: ${level.verifier}`;
+
+
+        info.appendChild(title);
+        info.appendChild(creator);
+        info.appendChild(verifier);
+
+
+        card.appendChild(info);
+
+
+        levelsList.appendChild(card);
+
+    });
+
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+searchInput.addEventListener(
+    "input",
+    renderLevels
+);
+
+
+/* ==================================================
+   INITIAL LOAD
+================================================== */
+
+renderLevels();
+
+</script>
+
+
+<style>
+
+/* ==================================================
+   PAGE
+================================================== */
+
+.levels-page {
+
+    width:
+        min(
+            1050px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        60px 0 100px;
+
+}
+
+
+/* ==================================================
+   HEADING
+================================================== */
+
+.page-heading {
+
+    margin-bottom:
+        35px;
+
+}
+
+.page-heading h1 {
+
+    margin:
+        0;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+    font-size:
+        48px;
+
+    line-height:
+        1;
+
+}
+
+.page-heading p {
+
+    margin:
+        10px 0 0;
+
+    color:
+        #77777d;
+
+    font-size:
+        15px;
+
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+.levels-controls {
+
+    display:
+        flex;
+
+    margin-bottom:
+        25px;
+
+}
+
+.level-search {
+
+    width:
+        100%;
+
+    min-height:
+        45px;
+
+    padding:
+        10px 13px;
+
+    box-sizing:
+        border-box;
+
+    background:
+        #080809;
+
+    color:
+        #ffffff;
+
+    border:
+        1px solid #303034;
+
+    border-radius:
+        5px;
+
+    outline:
+        none;
+
+}
+
+.level-search::placeholder {
+
+    color:
+        #5f5f65;
+
+}
+
+.level-search:focus {
+
+    border-color:
+        #ffd500;
+
+}
+
+
+/* ==================================================
+   LEVEL LIST
+================================================== */
+
+.levels-list {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
+}
+
+
+/* ==================================================
+   LEVEL CARD
+================================================== */
+
+.level-card {
+
+    min-height:
+        105px;
+
+    padding:
+        12px 18px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    box-sizing:
+        border-box;
+
+    background:
+        #111113;
+
+    border:
+        1px solid #242428;
+
+    border-radius:
+        8px;
+
+    color:
+        inherit;
+
+    text-decoration:
+        none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+.level-card:hover {
+
+    background:
+        #171719;
+
+    border-color:
+        #3c3c41;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ==================================================
+   THUMBNAIL
+================================================== */
+
+.level-thumbnail-wrapper {
+
+    width:
+        150px;
+
+    height:
+        85px;
+
+    flex-shrink:
+        0;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        #080809;
+
+    border:
+        1px solid #303034;
+
+    border-radius:
+        5px;
+
+}
+
+.level-thumbnail {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+}
+
+.no-thumbnail {
+
+    color:
+        #55555b;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.5px;
+
+}
+
+
+/* ==================================================
+   RANK
+================================================== */
+
+.level-rank {
+
+    width:
+        55px;
+
+    flex-shrink:
+        0;
+
+    color:
+        #ffd500;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+    font-size:
+        30px;
+
+    line-height:
+        1;
+
+}
+
+
+/* ==================================================
+   INFO
+================================================== */
+
+.level-info {
+
+    min-width:
+        0;
+
+    flex:
+        1;
+
+}
+
+.level-info h2 {
+
+    margin:
+        0 0 7px;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+    font-size:
+        27px;
+
+    line-height:
+        1.1;
+
+}
+
+.level-creator,
+.level-verifier {
+
+    margin:
+        2px 0;
+
+    color:
+        #77777d;
+
+    font-size:
+        13px;
+
+}
+
+
+/* ==================================================
+   EMPTY STATE
+================================================== */
+
+.empty-state {
+
+    padding:
+        45px 25px;
+
+    text-align:
+        center;
+
+    background:
+        #111113;
+
+    border:
+        1px solid #242428;
+
+    border-radius:
+        8px;
+
+}
+
+.empty-state h2 {
+
+    margin:
+        0 0 8px;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+}
+
+.empty-state p {
+
+    margin:
+        0;
+
+    color:
+        #77777d;
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+    .levels-page {
+
+        width:
+            calc(100% - 24px);
+
+        padding-top:
+            40px;
+
+    }
+
+    .page-heading h1 {
+
+        font-size:
+            38px;
+
+    }
+
+    .level-card {
+
+        gap:
+            12px;
+
+        padding:
+            12px;
+
+    }
+
+    .level-thumbnail-wrapper {
+
+        width:
+            110px;
+
+        height:
+            62px;
+
+    }
+
+    .level-rank {
+
+        width:
+            38px;
+
+        font-size:
+            22px;
+
+    }
+
+    .level-info h2 {
+
+        font-size:
+            21px;
+
+    }
+
+    .level-creator,
+    .level-verifier {
+
+        font-size:
+            11px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .level-card {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            40px 1fr;
+
+    }
+
+    .level-thumbnail-wrapper {
+
+        width:
+            100%;
+
+        height:
+            130px;
+
+        grid-column:
+            1 / -1;
+
+    }
+
+    .level-rank {
+
+        grid-column:
+            1;
+
+    }
+
+    .level-info {
+
+        grid-column:
+            2;
+
+    }
+
+}
+
+</style>
+
+</body>
+</html>

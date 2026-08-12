@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HVLL - Level</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <a href="homepage.html" class="logo">
+            <img src="HVLL.webp" alt="HVLL">
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="homepage.html">
+                Home
+            </a>
+
+            <a href="levels.html">
+                Levels
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="edit-profile.html">
+                Edit Profile
+            </a>
+
+            <a href="releases.html">
+                Releases
+            </a>
+
+            <a href="create-account.html" class="account-button">
+                Create Account
+            </a>
+
+            <a
+                href="https://discord.gg/bbJP9rTnj"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Discord
+            </a>
+
+            <a
+                href="https://www.youtube.com/@RCSB4771"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                YouTube
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<main class="releases-page">
+
+    <section class="page-heading">
+
+        <h1>
+            Releases
+        </h1>
+
+        <p>
+            HVLL updates, new features, and major changes.
+        </p>
+
+    </section>
+
+
+    <!-- LATEST RELEASE -->
+
+    <section class="latest-release">
+
+        <div class="latest-label">
+            Latest Release
+        </div>
+
+        <div class="latest-version">
+            v1.0.0
+        </div>
+
+        <h2>
+            Initial Release
+        </h2>
+
+        <p class="release-date">
+            August 2026
+        </p>
+
+<p class="release-description">
+    The first public release of HVLL.
+    The website includes the Top 10 levels list (for now), individual level pages,
+    player profiles, profile customization, and the foundation for future HVLL features.
+</p>
+
+    </section>
+
+
+    <!-- RELEASE HISTORY -->
+
+    <section class="release-history">
+
+        <h2 class="section-title">
+            Release History
+        </h2>
+
+
+        <!-- VERSION 1.0.0 -->
+
+        <article class="release-card">
+
+            <div class="release-header">
+
+                <div>
+
+                    <span class="release-version">
+                        v1.0.0
+                    </span>
+
+                    <h3>
+                        Initial Release
+                    </h3>
+
+                </div>
+
+                <span class="release-date">
+                    August 2026
+                </span>
+
+            </div>
+
+
+            <div class="release-content">
+
+                <h4>
+                    Added
+                </h4>
+
+                <ul>
+
+                    <li>
+                        HVLL level rankings
+                    </li>
+
+                    <li>
+                        Individual level pages
+                    </li>
+
+                    <li>
+                        Player profiles
+                    </li>
+
+                    <li>
+                        Profile editing
+                    </li>
+
+                    <li>
+                        Custom profile pictures
+                    </li>
+
+                    <li>
+                        Country flag selection
+                    </li>
+
+                    <li>
+                        Account links
+                    </li>
+
+                    <li>
+                        HVLL navigation system
+                    </li>
+
+                    <li>
+                        Top 10 level list
+                    </li>
+
+                    <li>
+                        Level thumbnails
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </article>
+
+
+        <!-- UPCOMING -->
+
+        <article class="release-card upcoming">
+
+            <div class="release-header">
+
+                <div>
+
+                    <span class="release-version">
+                        v1.1.0
+                    </span>
+
+                    <h3>
+                        Upcoming
+                    </h3>
+
+                </div>
+
+                <span class="release-date">
+                    TBA
+                </span>
+
+            </div>
+
+
+            <div class="release-content">
+
+                <p>
+                    Future HVLL features will appear here.
+                </p>
+
+            </div>
+
+        </article>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <p>
+        HVLL — Hardest Verified Levels List
+    </p>
+
+    <p>
+        Verified. Ranked. Challenged.
+    </p>
+
+</footer>
+
+
+<style>
+
+/* ==================================================
+   RELEASES PAGE
+================================================== */
+
+.releases-page {
+
+    width:
+        min(
+            950px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        60px 0 100px;
+
+}
+
+
+/* ==================================================
+   LATEST RELEASE
+================================================== */
+
+.latest-release {
+
+    position:
+        relative;
+
+    margin-bottom:
+        50px;
+
+    padding:
+        35px;
+
+    background:
+        #111113;
+
+    border:
+        1px solid #3c3c41;
+
+    border-radius:
+        8px;
+
+    overflow:
+        hidden;
+
+}
+
+.latest-release::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    width:
+        4px;
+
+    height:
+        100%;
+
+    background:
+        #ffd500;
+
+}
+
+.latest-label {
+
+    margin-bottom:
+        8px;
+
+    color:
+        #ffd500;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        1px;
+
+}
+
+.latest-version {
+
+    color:
+        #77777d;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+    font-size:
+        18px;
+
+}
+
+.latest-release h2 {
+
+    margin:
+        4px 0 8px;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+    font-size:
+        36px;
+
+}
+
+.release-date {
+
+    color:
+        #69696f;
+
+    font-size:
+        12px;
+
+}
+
+.release-description {
+
+    max-width:
+        700px;
+
+    margin:
+        20px 0 0;
+
+    color:
+        #8a8a90;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* ==================================================
+   HISTORY
+================================================== */
+
+.section-title {
+
+    margin:
+        0 0 20px;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+    font-size:
+        30px;
+
+}
+
+.release-history {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        14px;
+
+}
+
+
+/* ==================================================
+   RELEASE CARD
+================================================== */
+
+.release-card {
+
+    padding:
+        25px;
+
+    background:
+        #111113;
+
+    border:
+        1px solid #242428;
+
+    border-radius:
+        8px;
+
+}
+
+.release-card.upcoming {
+
+    opacity:
+        0.65;
+
+}
+
+
+/* ==================================================
+   RELEASE HEADER
+================================================== */
+
+.release-header {
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    padding-bottom:
+        20px;
+
+    border-bottom:
+        1px solid #242428;
+
+}
+
+.release-version {
+
+    color:
+        #ffd500;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+    font-size:
+        18px;
+
+}
+
+.release-header h3 {
+
+    margin:
+        4px 0 0;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Berthold Block",
+        Arial,
+        sans-serif;
+
+    font-size:
+        27px;
+
+}
+
+
+/* ==================================================
+   RELEASE CONTENT
+================================================== */
+
+.release-content {
+
+    padding-top:
+        20px;
+
+}
+
+.release-content h4 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        14px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.5px;
+
+}
+
+.release-content ul {
+
+    margin:
+        0;
+
+    padding-left:
+        20px;
+
+}
+
+.release-content li {
+
+    margin:
+        7px 0;
+
+    color:
+        #85858b;
+
+    font-size:
+        14px;
+
+}
+
+.release-content p {
+
+    margin:
+        0;
+
+    color:
+        #85858b;
+
+    font-size:
+        14px;
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+
+    .releases-page {
+
+        width:
+            calc(100% - 24px);
+
+        padding-top:
+            40px;
+
+    }
+
+    .page-heading h1 {
+
+        font-size:
+            38px;
+
+    }
+
+    .latest-release {
+
+        padding:
+            25px;
+
+    }
+
+    .latest-release h2 {
+
+        font-size:
+            29px;
+
+    }
+
+    .release-header {
+
+        flex-direction:
+            column;
+
+        gap:
+            8px;
+
+    }
+
+}
+
+</style>
+
+</body>
+</html>

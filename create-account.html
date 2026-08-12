@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HVLL — Create Account</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <a href="homepage.html" class="logo">
+            <img src="HVLL.webp" alt="HVLL">
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="homepage.html">
+                Home
+            </a>
+
+            <a href="levels.html">
+                Levels
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="edit-profile.html">
+                Edit Profile
+            </a>
+
+            <a href="releases.html">
+                Releases
+            </a>
+
+            <a href="create-account.html" class="active account-button">
+                Create Account
+            </a>
+
+            <a
+                href="https://discord.gg/bbJP9rTnj"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Discord
+            </a>
+
+            <a
+                href="https://www.youtube.com/@RCSB4771"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                YouTube
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+            <a
+                class="social-button discord-button"
+                href="https://discord.gg/bbJP9rTnj"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Discord
+            </a>
+
+            <a
+                class="social-button youtube-button"
+                href="https://www.youtube.com/@RCSB4771"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                YouTube
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="account-page">
+
+    <section class="account-card">
+
+        <h1>
+            Create your account
+        </h1>
+
+        <p class="account-description">
+            Create an HVLL account to have your own profile,
+            statistics, levels and HVLL records.
+        </p>
+
+
+        <form id="createAccountForm">
+
+            <label for="username">
+                Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Choose a username"
+                required
+                minlength="3"
+                maxlength="20"
+            >
+
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Choose a password"
+                required
+                minlength="6"
+            >
+
+
+            <label for="confirmPassword">
+                Confirm password
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Enter your password again"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Create Account
+            </button>
+
+            <p
+                id="accountMessage"
+                class="form-message"
+            ></p>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <p>
+        HVLL — Hardest Verified Levels List
+    </p>
+
+    <p>
+        Verified. Ranked. Challenged.
+    </p>
+
+</footer>
+
+<script>
+
+const form =
+    document.getElementById("createAccountForm");
+
+const message =
+    document.getElementById("accountMessage");
+
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    const username =
+        document.getElementById("username")
+        .value
+        .trim();
+
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+
+    const confirmPassword =
+        document.getElementById("confirmPassword")
+        .value;
+
+
+    if (password !== confirmPassword) {
+
+        message.textContent =
+            "Passwords do not match.";
+
+        message.className =
+            "form-message error";
+
+        return;
+    }
+
+
+    const existingAccount =
+        localStorage.getItem("hvllAccount");
+
+
+    if (existingAccount) {
+
+        message.textContent =
+            "An account already exists on this browser.";
+
+        message.className =
+            "form-message error";
+
+        return;
+    }
+
+
+    const account = {
+
+        username: username,
+
+        password: password,
+
+        profile: {
+
+            flag: "🇬🇧",
+
+            pfp: "",
+
+            bio: "",
+
+            accountLinks: {
+
+                youtube: "",
+                discord: "",
+                geometryDash: ""
+
+            },
+
+            stats: {
+
+                demonsCompleted: 0,
+                demonsCreated: 0
+
+            },
+
+            levels: [],
+
+            hvllHistory: []
+
+        },
+
+        records: []
+
+    };
+
+
+    localStorage.setItem(
+        "hvllAccount",
+        JSON.stringify(account)
+    );
+
+
+    message.textContent =
+        "Account created successfully!";
+
+    message.className =
+        "form-message success";
+
+
+    form.reset();
+
+});
+
+</script>
+
+</body>
+
+</html>

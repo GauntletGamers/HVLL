@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HVLL - Level</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+        <a href="homepage.html" class="logo">
+            <img src="HVLL.webp" alt="HVLL">
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="homepage.html">
+                Home
+            </a>
+
+            <a href="levels.html">
+                Levels
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="edit-profile.html">
+                Edit Profile
+            </a>
+
+            <a href="releases.html">
+                Releases
+            </a>
+
+            <a href="create-account.html" class="account-button">
+                Create Account
+            </a>
+
+            <a
+                href="https://discord.gg/bbJP9rTnj"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Discord
+            </a>
+
+            <a
+                href="https://www.youtube.com/@RCSB4771"
+                class="social-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                YouTube
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<main class="edit-profile-page">
+
+<section class="edit-profile-card">
+
+    <h1>Edit Profile</h1>
+
+    <p class="edit-description">
+        Change your HVLL profile information.
+    </p>
+
+
+    <form id="editProfileForm">
+
+
+        <!-- PROFILE PICTURE -->
+
+        <div class="edit-field pfp-field">
+
+            <label>
+                Profile Picture
+            </label>
+
+            <div class="edit-pfp-row">
+
+                <div
+                    class="edit-pfp-preview"
+                    id="pfpPreview"
+                >
+                    ?
+                </div>
+
+                <div class="pfp-buttons">
+
+                    <label
+                        for="pfpInput"
+                        class="secondary-button"
+                    >
+                        Upload Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="pfpInput"
+                        accept="image/png,image/jpeg,image/webp,image/gif"
+                        hidden
+                    >
+
+                    <button
+                        type="button"
+                        id="removePfp"
+                        class="remove-button"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- USERNAME -->
+
+        <div class="edit-field">
+
+            <label for="username">
+                Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Username"
+                minlength="3"
+                maxlength="20"
+                required
+            >
+
+        </div>
+
+
+        <!-- COUNTRY -->
+
+        <div class="edit-field">
+
+            <label>
+                Country
+            </label>
+
+            <div
+                class="country-picker"
+                id="countryPicker"
+            >
+
+                <button
+                    type="button"
+                    id="countryButton"
+                    class="country-picker-button"
+                >
+
+                    <span
+                        id="countryButtonContent"
+                        class="country-button-content"
+                    >
+                        <span class="country-placeholder">
+                            Select a country
+                        </span>
+                    </span>
+
+                    <span class="country-arrow">
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    id="countryDropdown"
+                    class="country-dropdown"
+                >
+
+                    <input
+                        type="text"
+                        id="countrySearch"
+                        class="country-search"
+                        placeholder="Search countries..."
+                        autocomplete="off"
+                    >
+
+                    <div
+                        id="countryList"
+                        class="country-list"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DISCORD -->
+
+        <div class="edit-field">
+
+            <label for="discord">
+                Discord
+            </label>
+
+            <input
+                type="url"
+                id="discord"
+                placeholder="https://discord.com/users/..."
+            >
+
+        </div>
+
+
+        <!-- YOUTUBE -->
+
+        <div class="edit-field">
+
+            <label for="youtube">
+                YouTube
+            </label>
+
+            <input
+                type="url"
+                id="youtube"
+                placeholder="https://youtube.com/@..."
+            >
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="edit-actions">
+
+            <a
+                href="profile.html"
+                class="secondary-button"
+            >
+                Cancel
+            </a>
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Save Profile
+            </button>
+
+        </div>
+
+
+        <p
+            id="profileMessage"
+            class="form-message"
+        ></p>
+
+
+    </form>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+
+<p>
+    HVLL — Hardest Verified Levels List
+</p>
+
+</footer>
+
+<script>
+
+/*
+==================================================
+COUNTRIES
+==================================================
+*/
+
+const countries = [
+
+    ["Afghanistan", "af"],
+    ["Albania", "al"],
+    ["Algeria", "dz"],
+    ["Andorra", "ad"],
+    ["Angola", "ao"],
+    ["Antigua and Barbuda", "ag"],
+    ["Argentina", "ar"],
+    ["Armenia", "am"],
+    ["Australia", "au"],
+    ["Austria", "at"],
+    ["Azerbaijan", "az"],
+
+    ["Bahamas", "bs"],
+    ["Bahrain", "bh"],
+    ["Bangladesh", "bd"],
+    ["Barbados", "bb"],
+    ["Belarus", "by"],
+    ["Belgium", "be"],
+    ["Belize", "bz"],
+    ["Benin", "bj"],
+    ["Bhutan", "bt"],
+    ["Bolivia", "bo"],
+    ["Bosnia and Herzegovina", "ba"],
+    ["Botswana", "bw"],
+    ["Brazil", "br"],
+    ["Brunei", "bn"],
+    ["Bulgaria", "bg"],
+    ["Burkina Faso", "bf"],
+    ["Burundi", "bi"],
+
+    ["Cabo Verde", "cv"],
+    ["Cambodia", "kh"],
+    ["Cameroon", "cm"],
+    ["Canada", "ca"],
+    ["Central African Republic", "cf"],
+    ["Chad", "td"],
+    ["Chile", "cl"],
+    ["China", "cn"],
+    ["Colombia", "co"],
+    ["Comoros", "km"],
+    ["Congo", "cg"],
+    ["Costa Rica", "cr"],
+    ["Croatia", "hr"],
+    ["Cuba", "cu"],
+    ["Cyprus", "cy"],
+    ["Czechia", "cz"],
+
+    ["Democratic Republic of the Congo", "cd"],
+    ["Denmark", "dk"],
+    ["Djibouti", "dj"],
+    ["Dominica", "dm"],
+    ["Dominican Republic", "do"],
+
+    ["Ecuador", "ec"],
+    ["Egypt", "eg"],
+    ["El Salvador", "sv"],
+    ["Equatorial Guinea", "gq"],
+    ["Eritrea", "er"],
+    ["Estonia", "ee"],
+    ["Eswatini", "sz"],
+    ["Ethiopia", "et"],
+
+    ["Fiji", "fj"],
+    ["Finland", "fi"],
+    ["France", "fr"],
+
+    ["Gabon", "ga"],
+    ["Gambia", "gm"],
+    ["Georgia", "ge"],
+    ["Germany", "de"],
+    ["Ghana", "gh"],
+    ["Greece", "gr"],
+    ["Grenada", "gd"],
+    ["Guatemala", "gt"],
+    ["Guinea", "gn"],
+    ["Guinea-Bissau", "gw"],
+    ["Guyana", "gy"],
+
+    ["Haiti", "ht"],
+    ["Honduras", "hn"],
+    ["Hungary", "hu"],
+
+    ["Iceland", "is"],
+    ["India", "in"],
+    ["Indonesia", "id"],
+    ["Iran", "ir"],
+    ["Iraq", "iq"],
+    ["Ireland", "ie"],
+    ["Israel", "il"],
+    ["Italy", "it"],
+    ["Ivory Coast", "ci"],
+
+    ["Jamaica", "jm"],
+    ["Japan", "jp"],
+    ["Jordan", "jo"],
+
+    ["Kazakhstan", "kz"],
+    ["Kenya", "ke"],
+    ["Kiribati", "ki"],
+    ["Kuwait", "kw"],
+    ["Kyrgyzstan", "kg"],
+
+    ["Laos", "la"],
+    ["Latvia", "lv"],
+    ["Lebanon", "lb"],
+    ["Lesotho", "ls"],
+    ["Liberia", "lr"],
+    ["Libya", "ly"],
+    ["Liechtenstein", "li"],
+    ["Lithuania", "lt"],
+    ["Luxembourg", "lu"],
+
+    ["Madagascar", "mg"],
+    ["Malawi", "mw"],
+    ["Malaysia", "my"],
+    ["Maldives", "mv"],
+    ["Mali", "ml"],
+    ["Malta", "mt"],
+    ["Marshall Islands", "mh"],
+    ["Mauritania", "mr"],
+    ["Mauritius", "mu"],
+    ["Mexico", "mx"],
+    ["Micronesia", "fm"],
+    ["Moldova", "md"],
+    ["Monaco", "mc"],
+    ["Mongolia", "mn"],
+    ["Montenegro", "me"],
+    ["Morocco", "ma"],
+    ["Mozambique", "mz"],
+    ["Myanmar", "mm"],
+
+    ["Namibia", "na"],
+    ["Nauru", "nr"],
+    ["Nepal", "np"],
+    ["Netherlands", "nl"],
+    ["New Zealand", "nz"],
+    ["Nicaragua", "ni"],
+    ["Niger", "ne"],
+    ["Nigeria", "ng"],
+    ["North Korea", "kp"],
+    ["North Macedonia", "mk"],
+    ["Norway", "no"],
+
+    ["Oman", "om"],
+
+    ["Pakistan", "pk"],
+    ["Palau", "pw"],
+    ["Palestine", "ps"],
+    ["Panama", "pa"],
+    ["Papua New Guinea", "pg"],
+    ["Paraguay", "py"],
+    ["Peru", "pe"],
+    ["Philippines", "ph"],
+    ["Poland", "pl"],
+    ["Portugal", "pt"],
+
+    ["Qatar", "qa"],
+
+    ["Romania", "ro"],
+    ["Russia", "ru"],
+    ["Rwanda", "rw"],
+
+    ["Saint Kitts and Nevis", "kn"],
+    ["Saint Lucia", "lc"],
+    ["Saint Vincent and the Grenadines", "vc"],
+    ["Samoa", "ws"],
+    ["San Marino", "sm"],
+    ["Sao Tome and Principe", "st"],
+    ["Saudi Arabia", "sa"],
+    ["Senegal", "sn"],
+    ["Serbia", "rs"],
+    ["Seychelles", "sc"],
+    ["Sierra Leone", "sl"],
+    ["Singapore", "sg"],
+    ["Slovakia", "sk"],
+    ["Slovenia", "si"],
+    ["Solomon Islands", "sb"],
+    ["Somalia", "so"],
+    ["South Africa", "za"],
+    ["South Korea", "kr"],
+    ["South Sudan", "ss"],
+    ["Spain", "es"],
+    ["Sri Lanka", "lk"],
+    ["Sudan", "sd"],
+    ["Suriname", "sr"],
+    ["Sweden", "se"],
+    ["Switzerland", "ch"],
+    ["Syria", "sy"],
+
+    ["Taiwan", "tw"],
+    ["Tajikistan", "tj"],
+    ["Tanzania", "tz"],
+    ["Thailand", "th"],
+    ["Timor-Leste", "tl"],
+    ["Togo", "tg"],
+    ["Tonga", "to"],
+    ["Trinidad and Tobago", "tt"],
+    ["Tunisia", "tn"],
+    ["Turkey", "tr"],
+    ["Turkmenistan", "tm"],
+    ["Tuvalu", "tv"],
+
+    ["Uganda", "ug"],
+    ["Ukraine", "ua"],
+    ["United Arab Emirates", "ae"],
+    ["United Kingdom", "gb"],
+    ["United States", "us"],
+    ["Uruguay", "uy"],
+    ["Uzbekistan", "uz"],
+
+    ["Vanuatu", "vu"],
+    ["Vatican City", "va"],
+    ["Venezuela", "ve"],
+    ["Vietnam", "vn"],
+
+    ["Yemen", "ye"],
+
+    ["Zambia", "zm"],
+    ["Zimbabwe", "zw"]
+
+];
+
+
+/*
+==================================================
+ELEMENTS
+==================================================
+*/
+
+const form =
+    document.getElementById("editProfileForm");
+
+const countryPicker =
+    document.getElementById("countryPicker");
+
+const countryButton =
+    document.getElementById("countryButton");
+
+const countryDropdown =
+    document.getElementById("countryDropdown");
+
+const countrySearch =
+    document.getElementById("countrySearch");
+
+const countryList =
+    document.getElementById("countryList");
+
+const countryButtonContent =
+    document.getElementById("countryButtonContent");
+
+const pfpInput =
+    document.getElementById("pfpInput");
+
+const pfpPreview =
+    document.getElementById("pfpPreview");
+
+const removePfp =
+    document.getElementById("removePfp");
+
+const message =
+    document.getElementById("profileMessage");
+
+
+let selectedCountry = null;
+let selectedPfp = null;
+
+
+/*
+==================================================
+FLAG IMAGE
+==================================================
+*/
+
+function getFlagURL(code) {
+
+    return `https://flagcdn.com/w80/${code}.png`;
+
+}
+
+
+/*
+==================================================
+COUNTRY BUTTON
+==================================================
+*/
+
+function updateCountryButton() {
+
+    countryButtonContent.innerHTML = "";
+
+
+    if (!selectedCountry) {
+
+        const placeholder =
+            document.createElement("span");
+
+        placeholder.className =
+            "country-placeholder";
+
+        placeholder.textContent =
+            "Select a country";
+
+        countryButtonContent.appendChild(
+            placeholder
+        );
+
+        return;
+    }
+
+
+    const image =
+        document.createElement("img");
+
+    image.src =
+        getFlagURL(
+            selectedCountry.code
+        );
+
+    image.alt =
+        `${selectedCountry.name} flag`;
+
+    image.className =
+        "selected-country-flag";
+
+
+    const name =
+        document.createElement("span");
+
+    name.textContent =
+        selectedCountry.name;
+
+
+    countryButtonContent.appendChild(image);
+
+    countryButtonContent.appendChild(name);
+
+}
+
+
+/*
+==================================================
+COUNTRY LIST
+==================================================
+*/
+
+function renderCountries(search = "") {
+
+    countryList.innerHTML = "";
+
+
+    const query =
+        search.trim().toLowerCase();
+
+
+    countries.forEach(
+        ([name, code]) => {
+
+            if (
+                query &&
+                !name
+                    .toLowerCase()
+                    .includes(query)
+            ) {
+                return;
+            }
+
+
+            const option =
+                document.createElement("button");
+
+            option.type =
+                "button";
+
+            option.className =
+                "country-option";
+
+
+            const image =
+                document.createElement("img");
+
+            image.src =
+                getFlagURL(code);
+
+            image.alt =
+                `${name} flag`;
+
+            image.loading =
+                "lazy";
+
+
+            const text =
+                document.createElement("span");
+
+            text.textContent =
+                name;
+
+
+            option.appendChild(image);
+
+            option.appendChild(text);
+
+
+            option.addEventListener(
+                "click",
+                () => {
+
+                    selectedCountry = {
+                        name: name,
+                        code: code
+                    };
+
+
+                    updateCountryButton();
+
+
+                    countryDropdown
+                        .classList
+                        .remove("open");
+
+                }
+            );
+
+
+            countryList.appendChild(option);
+
+        }
+    );
+
+}
+
+
+/*
+==================================================
+OPEN COUNTRY PICKER
+==================================================
+*/
+
+countryButton.addEventListener(
+    "click",
+    () => {
+
+        countryDropdown
+            .classList
+            .toggle("open");
+
+
+        if (
+            countryDropdown
+                .classList
+                .contains("open")
+        ) {
+
+            countrySearch.focus();
+
+        }
+
+    }
+);
+
+
+/*
+==================================================
+CLOSE COUNTRY PICKER
+==================================================
+*/
+
+document.addEventListener(
+    "click",
+    event => {
+
+        if (
+            !countryPicker.contains(
+                event.target
+            )
+        ) {
+
+            countryDropdown
+                .classList
+                .remove("open");
+
+        }
+
+    }
+);
+
+
+/*
+==================================================
+SEARCH COUNTRIES
+==================================================
+*/
+
+countrySearch.addEventListener(
+    "input",
+    () => {
+
+        renderCountries(
+            countrySearch.value
+        );
+
+    }
+);
+
+
+/*
+==================================================
+PROFILE PICTURE
+==================================================
+*/
+
+pfpInput.addEventListener(
+    "change",
+    () => {
+
+        const file =
+            pfpInput.files[0];
+
+
+        if (!file) {
+            return;
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            event => {
+
+                selectedPfp =
+                    event.target.result;
+
+
+                showPfp(
+                    selectedPfp
+                );
+
+            };
+
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+function showPfp(src) {
+
+    pfpPreview.innerHTML = "";
+
+
+    const image =
+        document.createElement("img");
+
+    image.src =
+        src;
+
+    image.alt =
+        "Profile picture";
+
+
+    pfpPreview.appendChild(
+        image
+    );
+
+}
+
+
+removePfp.addEventListener(
+    "click",
+    () => {
+
+        selectedPfp = null;
+
+        pfpInput.value = "";
+
+        pfpPreview.textContent = "?";
+
+    }
+);
+
+
+/*
+==================================================
+LOAD ACCOUNT
+==================================================
+*/
+
+let account = null;
+
+
+const storedAccount =
+    localStorage.getItem("hvllAccount");
+
+
+if (storedAccount) {
+
+    try {
+
+        account =
+            JSON.parse(
+                storedAccount
+            );
+
+    } catch (error) {
+
+        console.error(
+            "Could not read HVLL account.",
+            error
+        );
+
+    }
+
+}
+
+
+if (account) {
+
+    document.getElementById("username")
+        .value =
+        account.username || "";
+
+
+    const profile =
+        account.profile || {};
+
+
+    const links =
+        profile.links || {};
+
+
+    document.getElementById("discord")
+        .value =
+        links.discord || "";
+
+
+    document.getElementById("youtube")
+        .value =
+        links.youtube || "";
+
+
+    if (profile.pfp) {
+
+        selectedPfp =
+            profile.pfp;
+
+        showPfp(
+            selectedPfp
+        );
+
+    }
+
+
+    const savedCode =
+        profile.flagCode ||
+        profile.flag ||
+        "";
+
+
+    if (savedCode) {
+
+        const found =
+            countries.find(
+                ([name, code]) =>
+                    code === savedCode
+            );
+
+
+        if (found) {
+
+            selectedCountry = {
+
+                name: found[0],
+
+                code: found[1]
+
+            };
+
+
+            updateCountryButton();
+
+        }
+
+    }
+
+}
+
+
+/*
+==================================================
+SAVE PROFILE
+==================================================
+*/
+
+form.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        /*
+        Keep the existing account instead
+        of destroying records, levels,
+        history, password, etc.
+        */
+
+        if (!account) {
+
+            message.textContent =
+                "No account found.";
+
+            message.className =
+                "form-message error";
+
+            return;
+
+        }
+
+
+        account.username =
+            document
+                .getElementById("username")
+                .value
+                .trim();
+
+
+        if (!account.profile) {
+
+            account.profile = {};
+
+        }
+
+
+        account.profile.pfp =
+            selectedPfp || "";
+
+
+        if (selectedCountry) {
+
+            account.profile.flagCode =
+                selectedCountry.code;
+
+            account.profile.flagName =
+                selectedCountry.name;
+
+            account.profile.flag =
+                selectedCountry.code;
+
+        } else {
+
+            account.profile.flagCode = "";
+
+            account.profile.flagName = "";
+
+            account.profile.flag = "";
+
+        }
+
+
+        if (!account.profile.links) {
+
+            account.profile.links = {};
+
+        }
+
+
+        account.profile.links.discord =
+            document
+                .getElementById("discord")
+                .value
+                .trim();
+
+
+        account.profile.links.youtube =
+            document
+                .getElementById("youtube")
+                .value
+                .trim();
+
+
+        /*
+        Save without touching:
+        - password
+        - records
+        - levels
+        - HVLL history
+        - stats
+        */
+
+        localStorage.setItem(
+            "hvllAccount",
+            JSON.stringify(account)
+        );
+
+
+        message.textContent =
+            "Profile saved successfully!";
+
+        message.className =
+            "form-message success";
+
+
+        setTimeout(
+            () => {
+
+                window.location.href =
+                    "profile.html";
+
+            },
+            700
+        );
+
+    }
+);
+
+
+/*
+==================================================
+INITIALISE
+==================================================
+*/
+
+renderCountries();
+
+</script>
+
+</body>
+</html>
